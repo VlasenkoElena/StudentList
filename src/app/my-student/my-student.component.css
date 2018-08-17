@@ -1,0 +1,24 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .myForm {
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  table {
+    width: 90%;
+    margin: auto;
+  }
+.list {
+  width: 70%;
+  margin: 20px auto;
+  display: flex;
+}

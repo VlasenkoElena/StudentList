@@ -1,0 +1,47 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Last Name</th>
+      <th>Courses</th>
+      <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of students; let idx = index" class="">
+      <th scope="row">{{ idx + 1}}</th>
+      <td>{{s.name}}</td>
+      <td>{{s.lastName}}</td>
+      <td>{{s.coursesStrings[0]}}</td>
+      <td> 
+        <button mat-raised-button (click)="openDialog(idx)">Edit</button>
+        <button type="button" class="close" data-title="Delete" aria-label="Close" (click)="delStudent(idx)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+      </td>
+  </tr>
+  </tbody>
+</table>
+
+<form class="example-form myForm" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+    <mat-form-field class="example-full-width">
+      <input 
+      ngModel
+      name="studentName"
+       matInput 
+       placeholder="Enter new name">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+        <input 
+        ngModel
+        name="studentLastName"
+         matInput
+        placeholder="Enter last name" >
+      </mat-form-field>
+      <div>
+         <button type="submit" mat-raised-button color="primary" [disabled]="myForm.invalid">Add to list</button> 
+      </div>
+    </form>
+

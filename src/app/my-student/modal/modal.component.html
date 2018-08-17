@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+  <p>Edit</p>
+  <mat-form-field>
+    <input matInput 
+    [(ngModel)]="student.name" 
+    name="name">
+  </mat-form-field>
+  <mat-form-field>
+      <input matInput 
+      [(ngModel)]="student.lastName"
+      name="lastName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select value="Выберите курс">
+      <mat-option *ngFor="let c of courses">{{c.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="editStudent()">Ok</button>
+</div>
