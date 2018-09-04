@@ -1,8 +1,10 @@
+import { Courses } from "./courses.model";
+
 export class Student {
     name: string;
     lastName: string;
     courses: [number];
-    coursesStrings: string[] = [];
+    coursesObj: Courses[] = [];
     id?: number;
 
     constructor (name: string,

@@ -1,24 +1,22 @@
 .example-form {
     min-width: 150px;
-    max-width: 500px;
+    max-width: 800px;
     width: 100%;
   }
   .myForm {
     display: flex;
-    margin: auto;
+    margin: 15px auto;
     justify-content: space-around;
   }
   
-  .example-full-width {
-    width: 100%;
+  mat-form-field {
+    margin: 0 5px;
   }
 
   table {
     width: 90%;
     margin: auto;
   }
-.list {
-  width: 70%;
-  margin: 20px auto;
-  display: flex;
+.btn {
+  margin-top: 10px;
 }

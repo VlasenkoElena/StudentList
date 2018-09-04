@@ -27,11 +27,11 @@ export class MyStudentComponent implements OnInit {
   openDialog(idx): void {
     const dialogRef = this.dialog.open( ModalComponent, {
       width: '250px',
-      data: this.students[idx] 
+      data: [this.students[idx], this.courses] 
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+       this.getStudent();
     });
   }
 
@@ -61,8 +61,10 @@ export class MyStudentComponent implements OnInit {
     const student = new Student(
       form.value.studentName,
       form.value.studentLastName,
-      [name]
+      [form.value.idCourse]    
     )
+    console.log(form.value.idCourse);
+    
     this.studentService.addStudentToList(student)
      .subscribe((data: Student) => {
       let myStudent = new Student(
@@ -71,10 +73,12 @@ export class MyStudentComponent implements OnInit {
         data.courses,
         data.id);
         this.students.push(myStudent);
+        this.addStudentCourses();
       });
      form.setValue({
        studentName: '',
-       studentLastName: ''
+       studentLastName: '',
+       idCourse: ''
      });
   }
 
@@ -85,7 +89,7 @@ export class MyStudentComponent implements OnInit {
         this.courses.forEach(course => {
           //console.log(course);
           if (idCourse === course.id) {
-            student.coursesStrings.push(course.name);
+            student.coursesObj.push(course);
             console.log(this.students);
           }
         })

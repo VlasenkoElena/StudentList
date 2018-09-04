@@ -13,7 +13,7 @@
       <th scope="row">{{ idx + 1}}</th>
       <td>{{s.name}}</td>
       <td>{{s.lastName}}</td>
-      <td>{{s.coursesStrings[0]}}</td>
+      <td>{{s.coursesObj[0]?.name}}</td>
       <td> 
         <button mat-raised-button (click)="openDialog(idx)">Edit</button>
         <button type="button" class="close" data-title="Delete" aria-label="Close" (click)="delStudent(idx)">
@@ -25,22 +25,27 @@
 </table>
 
 <form class="example-form myForm" #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
       <input 
       ngModel
       name="studentName"
-       matInput 
-       placeholder="Enter new name">
+      matInput 
+      placeholder="Enter new name">
     </mat-form-field>
   
-    <mat-form-field class="example-full-width">
+    <mat-form-field>
         <input 
         ngModel
         name="studentLastName"
-         matInput
+        matInput
         placeholder="Enter last name" >
       </mat-form-field>
-      <div>
+      <mat-form-field>
+        <mat-select placeholder='Выберите курс' ngModel name="idCourse" >
+          <mat-option [value]="c.id" *ngFor="let c of courses">{{c.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="btn">
          <button type="submit" mat-raised-button color="primary" [disabled]="myForm.invalid">Add to list</button> 
       </div>
     </form>

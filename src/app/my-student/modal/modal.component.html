@@ -11,8 +11,8 @@
       name="lastName">
   </mat-form-field>
   <mat-form-field>
-    <mat-select value="Выберите курс">
-      <mat-option *ngFor="let c of courses">{{c.name}}</mat-option>
+    <mat-select placeholder={{student.coursesObj[0].name}}  [(ngModel)]="selectedIdCourse">
+      <mat-option [value]="c.id" *ngFor="let c of courses">{{c.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

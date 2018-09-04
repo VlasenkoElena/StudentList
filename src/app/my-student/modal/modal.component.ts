@@ -13,18 +13,20 @@ import { Courses } from '../../models/courses.model';
 export class ModalComponent implements OnInit {
 student: Student;
 courses: Courses[];
+selectedIdCourse: number;
 
   constructor(
     private studentService: StudentService,
     public dialogRef: MatDialogRef<MyStudentComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Student) {
-      this.student = data;
+    @Inject(MAT_DIALOG_DATA) public data) {
+      this.student = data[0];
+      this.courses = data[1]; 
     }
 
-  editStudent(student: Student) { 
+  editStudent() { 
     let stud = this.student;
-    console.log(stud);
-    
+    stud.courses[0] = this.selectedIdCourse; 
+    console.log(this.selectedIdCourse);
     this.studentService.editStudent(stud)
      .subscribe((data: Student) => {
        let editSt = new Student (
@@ -42,11 +44,5 @@ courses: Courses[];
     this.dialogRef.close();
   }
 
-  ngOnInit() {
-    this.studentService.getStudentCours()
-    .subscribe((courses: Courses[]) => {
-      console.log(courses);  
-      this.courses = courses;
-  })
- }
+  ngOnInit() {} 
 }
